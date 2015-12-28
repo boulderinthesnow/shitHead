@@ -1,0 +1,50 @@
+body {
+	background-color: indianRed;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	background-color: #405D51;
+	margin: -10px;
+
+}
+
+.mid-container {
+	display: flex;
+	justify-content: space-between;
+	/*background-color: blue;*/
+	width: 100vw;
+	height: 50vh;
+}
+
+.playArea1 {
+	background-color: #D6F6E9;
+	height: 25vh;
+	width: 100vw;
+	padding: 10px;
+}
+
+.playArea2 {
+	background-color: #83AA99;
+	width: 20vw;
+	border: 2px dotted green;
+	padding: 10px;
+}
+
+.playArea3 {
+	background-color: #5D5C5C;
+	width: 20vw;
+	padding: 10px;
+
+}
+
+.playArea4 {
+	background-color: #AA8983;
+	height: 25vh;
+	width: 100vw;
+	padding: 10px;
+}
