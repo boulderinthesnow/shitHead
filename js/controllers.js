@@ -26,7 +26,7 @@ app.controller('GameController', ["$scope", function($scope){
       this.gameType = gameType;
       this.deck = $scope.deck.map(function(x){return x})
       $scope.discard = this.discard = [];
-      this.players = {};
+      this.players = [];
       if (players !== NaN) {
         for (i = 1 ; i <= players ; i++) {
           this.players[i] = {hand: [], inPlay: [], score:0}
@@ -115,7 +115,7 @@ app.controller('GameController', ["$scope", function($scope){
       if (numIsNum && num < 5 && num > 0) {
         console.log("New game with ",num," players");
         $scope.game = new Game("ShitFace", num)
-        console.log($scope.game);
+        console.log($scope.game.players);      
       };
     };
    
