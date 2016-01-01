@@ -108,6 +108,16 @@ app.controller('GameController', ["$scope", function($scope){
       console.log($scope.discard, "DISCARDED");
     } // END FUNCTION
 
-    $scope.game1 = new Game("Blackjack", 2);
+    // $scope.game1 = new Game("Blackjack", 2);
+
+    $scope.setPlayers = function(num) {
+      var numIsNum = !isNaN(parseInt(num));
+      if (numIsNum && num < 5 && num > 0) {
+        console.log("New game with ",num," players");
+        $scope.game = new Game("ShitFace", num)
+        console.log($scope.game);
+      };
+    };
+   
    
 }]) // END CONTROLLER

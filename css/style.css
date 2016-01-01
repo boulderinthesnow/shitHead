@@ -21,17 +21,21 @@ body {
 	height: 50vh;
 }
 
+.gameArea {
+	padding: 10px;
+}
+
 .playArea1 {
 	background-color: #D6F6E9;
 	height: 25vh;
 	width: 100vw;
 	padding: 10px;
+	padding-left: 20px;
 }
 
 .playArea2 {
 	background-color: #83AA99;
 	width: 20vw;
-	border: 2px dotted green;
 	padding: 10px;
 }
 
@@ -47,4 +51,5 @@ body {
 	height: 25vh;
 	width: 100vw;
 	padding: 10px;
+	padding-left: 20px;
 }
