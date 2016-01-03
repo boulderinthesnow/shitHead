@@ -21,6 +21,13 @@ body {
 	height: 50vh;
 }
 
+.player-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
 .gameArea {
 	padding: 10px;
 }

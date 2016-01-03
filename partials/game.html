@@ -24,13 +24,22 @@
 			{{game.players[4]}}
 		</div>
 	</div>
-	<div class="playArea4">
+	<div class="playArea4 player-container">
 	player 1
 		{{game.players[1]}}
-		<span ng-repeat="(key, value) in game.players[1].revealedCards">
-			{{value.rank}}
-			{{value.suit}}
-			<img ng-src="/images/cards/{{value.rank}}_of_{{value.suit}}.png" alt="" height="200px">
-		</span>
+		<div>
+			<span ng-repeat="(key, value) in game.players[1].revealedCards">
+				{{value.rank}}
+				{{value.suit}}
+				<img ng-src="/images/cards/{{value.rank}}_of_{{value.suit}}.png" alt="" height="100px">
+			</span>
+		</div>
+		<div>
+			<span ng-repeat="(key, value) in game.players[1].hand">
+				{{value.rank}}
+				{{value.suit}}
+				<img ng-src="/images/cards/{{value.rank}}_of_{{value.suit}}.png" alt="" height="100px">
+			</span>
+		</div>
 	</div>
 </div>

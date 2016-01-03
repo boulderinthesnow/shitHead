@@ -131,10 +131,14 @@ app.controller('GameController', ["$scope", function($scope){
           player.revealedCards.push(
             $scope.game.deck.shift()
             );
+          player.hand.push(
+            $scope.game.deck.shift()
+            );
         };
       });
-
     };
+
+
    
    
 }]) // END CONTROLLER
