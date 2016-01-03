@@ -1,15 +1,16 @@
 app.controller('GameController', ["$scope", function($scope){
-    $scope.deck = [];
+    var deck = [];
     $scope.showNewGame = true;
 
     // creates an array of objects that represents a new deck of cards. 
-    // it adds this new ordered deck into $scope.deck
+    // it adds this new ordered deck into deck
     var newDeck = function () {
-      var suits = [ '♥', '♦', '♠', '♣' ];
+      // var suits = [ '♥', '♦', '♠', '♣' ];
+      var suits = [ 'hearts', 'diamonds', 'spades', 'clubs' ];
       var ranks = [ 'ace', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'jack', 'queen', 'king' ];
       suits.forEach(function (suit) {
         ranks.forEach(function (rank) {
-          $scope.deck.push(
+          deck.push(
             {
               suit: suit,
               rank: rank
@@ -25,7 +26,7 @@ app.controller('GameController', ["$scope", function($scope){
     // when the cards are played during a game, and where their score or values will be tracked. 
     var Game = function (gameType, players) {
       this.gameType = gameType;
-      this.deck = $scope.deck.map(function(x){return x});
+      this.deck = deck.map(function(x){return x});
       $scope.discard = this.discard = [];
       this.players = [];
       if (players !== NaN) {
@@ -124,15 +125,16 @@ app.controller('GameController', ["$scope", function($scope){
       $scope.game.shuffleDeck();
       $scope.game.players.forEach(function (player) {
         for (i = 0 ; i < 3 ; i++) {
-          console.log(player, "player");
-          console.log(player.blindCards);
           player.blindCards.push(
             $scope.game.deck.shift()
-            )
-        }
-      })
+            );
+          player.revealedCards.push(
+            $scope.game.deck.shift()
+            );
+        };
+      });
 
-    }
+    };
    
    
 }]) // END CONTROLLER
