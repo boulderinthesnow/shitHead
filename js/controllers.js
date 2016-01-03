@@ -1,11 +1,12 @@
 app.controller('GameController', ["$scope", function($scope){
     $scope.deck = [];
+    $scope.showNewGame = true;
 
     // creates an array of objects that represents a new deck of cards. 
     // it adds this new ordered deck into $scope.deck
     var newDeck = function () {
-      var suits = [ 'heart', 'diamond', 'spade', 'club' ];
-      var ranks = [ 'ace', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'jack', 'queen', 'king' ];
+      var suits = [ '♥', '♦', '♠', '♣' ];
+      var ranks = [ 'ace', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'jack', 'queen', 'king' ];
       suits.forEach(function (suit) {
         ranks.forEach(function (rank) {
           $scope.deck.push(
@@ -24,12 +25,12 @@ app.controller('GameController', ["$scope", function($scope){
     // when the cards are played during a game, and where their score or values will be tracked. 
     var Game = function (gameType, players) {
       this.gameType = gameType;
-      this.deck = $scope.deck.map(function(x){return x})
+      this.deck = $scope.deck.map(function(x){return x});
       $scope.discard = this.discard = [];
       this.players = [];
       if (players !== NaN) {
         for (i = 1 ; i <= players ; i++) {
-          this.players[i] = {hand: [], inPlay: [], score:0}
+          this.players[i] = {hand: [], blindCards: [], revealedCards: [], score:0};
         } // END FOR LOOP
       } // END IF
     } // END FUNCTION
@@ -111,13 +112,27 @@ app.controller('GameController', ["$scope", function($scope){
     // $scope.game1 = new Game("Blackjack", 2);
 
     $scope.setPlayers = function(num) {
-      var numIsNum = !isNaN(parseInt(num));
-      if (numIsNum && num < 5 && num > 0) {
+      if (num < 5 && num > 0) {
+        $scope.showNewGame = false;
         console.log("New game with ",num," players");
-        $scope.game = new Game("ShitFace", num)
+        $scope.game = new Game("ShitFace", num);
         console.log($scope.game.players);      
       };
     };
+
+    $scope.dealCards = function() {
+      $scope.game.shuffleDeck();
+      $scope.game.players.forEach(function (player) {
+        for (i = 0 ; i < 3 ; i++) {
+          console.log(player, "player");
+          console.log(player.blindCards);
+          player.blindCards.push(
+            $scope.game.deck.shift()
+            )
+        }
+      })
+
+    }
    
    
 }]) // END CONTROLLER

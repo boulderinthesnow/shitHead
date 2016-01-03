@@ -5,21 +5,29 @@
 	</div>
 	<div class="mid-container">
 		<div class="playArea2">
+		player 2
 			{{game.players[2]}}
 		</div>
 		<div class="gameArea">
 			Gamespace
-			<p>how many players?</p>
-			<input type="text" name="" id="" ng-model="players">
-			<button ng-click="setPlayers(players)">Go</button>
-			<br>
+			<div id="newGameToggle" ng-show="showNewGame">
+				<p>how many players?</p>
+				<input type="text" name="" id="" ng-model="players">
+				<button ng-click="setPlayers(players)">Go</button>	
+			</div>
+			<div ng-hide="showNewGame">
+				<button ng-click="dealCards()">Deal Cards</button>
+			</div>
+
 			{{deck}}
 		</div>
 		<div class="playArea3">
+		player 3
 			{{game.players[3]}}
 		</div>
 	</div>
 	<div class="playArea4">
+	player 4
 		{{game.players[4]}}
 	</div>
 </div>
