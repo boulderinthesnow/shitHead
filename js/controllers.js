@@ -138,7 +138,5 @@ app.controller('GameController', ["$scope", function($scope){
       });
     };
 
-
-   
-   
+       
 }]) // END CONTROLLER
