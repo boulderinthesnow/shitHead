@@ -2,6 +2,18 @@ app.controller('GameController', ["$scope", function($scope){
     var deck = [];
     $scope.showNewGame = true;
 
+    $scope.foo = "foobar"
+
+    // next step is to highlight the card being clicked
+    // http://stackoverflow.com/questions/19331779/how-to-highlight-a-selected-row-in-ngrepeat
+    $scope.test = function(index) {
+      console.log("foo")
+    }
+
+    $scope.getMyCtrlScope = function() {
+      return $scope;
+    }
+
     // creates an array of objects that represents a new deck of cards. 
     // it adds this new ordered deck into deck
     var newDeck = function () {
