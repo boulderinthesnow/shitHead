@@ -1,4 +1,4 @@
-app.controller('GameController', ["$scope", function($scope){
+app.controller('GameController', ["$scope","$timeout", function($scope, $timeout){
     var deck = [];
     $scope.showNewGame = true;
 
@@ -6,13 +6,6 @@ app.controller('GameController', ["$scope", function($scope){
 
     // next step is to highlight the card being clicked
     // http://stackoverflow.com/questions/19331779/how-to-highlight-a-selected-row-in-ngrepeat
-    $scope.test = function(index) {
-      console.log("foo")
-    }
-
-    $scope.getMyCtrlScope = function() {
-      return $scope;
-    }
 
     // creates an array of objects that represents a new deck of cards. 
     // it adds this new ordered deck into deck
@@ -134,7 +127,6 @@ app.controller('GameController', ["$scope", function($scope){
     };
 
     $scope.dealCards = function() {
-      $scope.game.shuffleDeck();
       $scope.game.players.forEach(function (player) {
         for (i = 0 ; i < 3 ; i++) {
           player.blindCards.push(
@@ -147,8 +139,26 @@ app.controller('GameController', ["$scope", function($scope){
             $scope.game.deck.shift()
             );
         };
-      });
+      })
     };
 
+    $(function(){
+
+      $('#dealButton').click(function(event) {
+        $timeout(function(){
+          for (i = 0 ; i < 3 ; i++) {
+            for(y = 1 ; y <= 4 ; y++) {
+              var playerCard = "p"+y+"_hand_"+i;
+              console.log($(playerCard));
+              console.log($("p1_hand_0"));
+              $(playerCard).on('click', function(event) {
+                event.preventDefault();
+                console.log(event);
+              });
+            }
+          }
+        }, 250)
+      });
+    });
        
 }]) // END CONTROLLER

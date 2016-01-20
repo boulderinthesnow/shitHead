@@ -9,7 +9,7 @@
 				<img 
 					ng-src="/images/cards/{{value.rank}}_of_{{value.suit}}.png" 
 					class="image" 
-					ng-click="$parent.test()"
+					id="p2_hand_{{$index}}"
 				>
 			</span>
 			{{test}}
@@ -22,6 +22,7 @@
 				<img
 					ng-src="/images/cards/{{value.rank}}_of_{{value.suit}}.png"
 					class="image"
+					id="p2_down_{{$index}}"
 				>
 				</span>
 			</span>
@@ -37,10 +38,10 @@
 			<div id="newGameToggle" ng-show="showNewGame">
 				<p>how many players?</p>
 				<input type="text" name="" id="" ng-model="players">
-				<button ng-click="setPlayers(players)">Go</button>	
+				<button ng-click="setPlayers(players)" id="goButton">Go</button>	
 			</div>
 			<div ng-hide="showNewGame">
-				<button ng-click="dealCards()">Deal Cards</button>
+				<button ng-click="dealCards()" id="dealButton">Deal Cards</button>
 			</div>
 		</div>
 		<div class="playArea3">
