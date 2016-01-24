@@ -64,3 +64,18 @@ body {
 .image {
 	height: 80px;
 }
+
+.red{
+  color:red;
+  border: 2px solid red;
+
+}
+
+.selected{
+  color:blue;
+  border: 2px solid blue;
+}
+
+.none {
+	border: none;
+}

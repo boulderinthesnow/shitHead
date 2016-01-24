@@ -4,12 +4,15 @@
 		{{game.players[2]}}
 		<div>
 			<span ng-repeat="(key, value) in game.players[2].revealedCards">
-				{{value.rank}}
-				{{value.suit}}
+				<span>
+					{{value.rank}}
+					{{value.suit}}
+				</span>
 				<img 
 					ng-src="/images/cards/{{value.rank}}_of_{{value.suit}}.png" 
 					class="image" 
 					id="p2_hand_{{$index}}"
+					ng-click="highlightCard(2,'hand',$index)"
 				>
 			</span>
 			{{test}}

@@ -2,7 +2,13 @@ app.controller('GameController', ["$scope","$timeout", function($scope, $timeout
     var deck = [];
     $scope.showNewGame = true;
 
-    $scope.foo = "foobar"
+    // $scope.highlightCard = function(player,cardLocation,index) {
+    //   console.log(this.value.rank)
+    //   console.log(this.value.suit)
+    //   console.log(player, cardLocation, index)
+
+
+    // }
 
     // next step is to highlight the card being clicked
     // http://stackoverflow.com/questions/19331779/how-to-highlight-a-selected-row-in-ngrepeat
@@ -149,11 +155,18 @@ app.controller('GameController', ["$scope","$timeout", function($scope, $timeout
           for (i = 0 ; i < 3 ; i++) {
             for(y = 1 ; y <= 4 ; y++) {
               var playerCard = "p"+y+"_hand_"+i;
-              console.log($(playerCard));
-              console.log($("p1_hand_0"));
-              $(playerCard).on('click', function(event) {
+              // console.log($('#'+playerCard));
+              // console.log($("p1_hand_0"));
+              $('#'+playerCard).on('click', function(event) {
+                var cardHasClasses = event.target.className
                 event.preventDefault();
-                console.log(event);
+                if (cardHasClasses === 'image selected') {
+                  cardHasClasses = 'image none';
+                } else {
+                  cardHasClasses = 'image selected';
+                };
+                event.target.className = cardHasClasses;
+
               });
             }
           }
