@@ -150,28 +150,29 @@ app.controller('GameController', ["$scope","$timeout", function($scope, $timeout
 
     $(function(){
 
-      $('#dealButton').click(function(event) {
-        $timeout(function(){
-          for (i = 0 ; i < 3 ; i++) {
-            for(y = 1 ; y <= 4 ; y++) {
-              var playerCard = "p"+y+"_hand_"+i;
-              // console.log($('#'+playerCard));
-              // console.log($("p1_hand_0"));
-              $('#'+playerCard).on('click', function(event) {
-                var cardHasClasses = event.target.className
-                event.preventDefault();
-                if (cardHasClasses === 'image selected') {
-                  cardHasClasses = 'image none';
-                } else {
-                  cardHasClasses = 'image selected';
-                };
-                event.target.className = cardHasClasses;
+      (function makeCardsSelectable () {
+        $('#dealButton').click(function(event) {
+          $timeout(function(){
+            for (i = 0 ; i < 3 ; i++) {
+              for(y = 1 ; y <= 4 ; y++) {
+                var playerCard = "p"+y+"_hand_"+i;
+                var playerDown = "p"+y+"_down_"+i;
+                $('#'+playerDown).add('#'+playerCard).on('click', function(event) {
+                  var cardHasClasses = event.target.className
+                  if (cardHasClasses === 'image selected') {
+                    cardHasClasses = 'image none';
+                  } else {
+                    cardHasClasses = 'image selected';
+                  }; // END IF
+                  event.target.className = cardHasClasses;
 
-              });
-            }
-          }
-        }, 250)
-      });
-    });
+                });
+              }
+            } // END FOR LOOP
+          }, 0) // END TIMEOUT
+        });
+      })(); // END FUNCTION
+
+    }); // END DOCUMENT READY
        
 }]) // END CONTROLLER
